@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="football_image" type="id" />
+    <item name="football_name" type="id" />
+    <item name="football_desc" type="id" />
+    <item name="football_back" type="id" />
+    <item name="football_body" type="id" />
+    <item name="football_go_back" type="id" />
+</resources>
