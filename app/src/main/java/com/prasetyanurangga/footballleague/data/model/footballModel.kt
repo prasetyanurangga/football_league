@@ -1,4 +1,4 @@
-package com.prasetyanurangga.footballleague.model
+package com.prasetyanurangga.footballleague.data.model
 
 data class footballModel (
     var id: Int,

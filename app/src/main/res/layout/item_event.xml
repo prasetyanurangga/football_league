@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+
+>
+    <LinearLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:id="@+id/event_name"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:id="@+id/event_league"
+                android:layout_height="wrap_content"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_height="wrap_content">
+            <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:background="@drawable/trophy"
+                        android:id="@+id/event_img_1"
+                        android:layout_centerHorizontal="true"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/event_home"
+                        android:layout_below="@id/event_img_1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/event_home_skor"
+                        android:textSize="25dp"
+                        android:layout_toStartOf="@+id/titik_2"
+                        android:layout_centerVertical="true"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:text=":"
+                        android:textSize="22dp"
+                        android:id="@+id/titik_2"
+                        android:layout_centerInParent="true"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:textSize="25dp"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/event_away_skor"
+                        android:layout_toEndOf="@+id/titik_2"
+                        android:layout_centerVertical="true"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:background="@drawable/trophy"
+                        android:id="@+id/event_img_2"
+                        android:layout_centerHorizontal="true"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/event_away"
+                        android:layout_below="@id/event_img_2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <TextView
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:id="@+id/event_time"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

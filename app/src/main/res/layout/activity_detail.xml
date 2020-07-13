@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            app:layout_editor_absoluteX="@dimen/cardview_default_radius"
+            app:layout_editor_absoluteY="@dimen/cardview_default_radius"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+                android:id="@+id/football_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+            <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_arrow_back"
+                    android:layout_width="30dp"
+                    android:elevation="10dp"
+                    android:id="@+id/football_go_back"
+                    android:layout_height="30dp"/>
+
+            <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/trophy_white"
+                    android:layout_width="30dp"
+                    android:elevation="10dp"
+                    android:id="@+id/football_go_event"
+                    android:layout_height="30dp"/>
+        </RelativeLayout>
+
+        <ImageView
+                android:layout_width="100dp"
+                android:elevation="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/football_back"
+                app:layout_constraintTop_toBottomOf="@id/football_back"
+                android:id="@+id/football_image"
+                android:layout_height="100dp"/>
+
+        <TextView
+                android:textFontWeight="700"
+                android:layout_width="wrap_content"
+                android:id="@+id/football_name"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/football_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/crd_est"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"/>
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardElevation="10dp"
+                android:id="@+id/crd_est"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/football_name"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/crd_fre"
+                android:layout_marginBottom="16dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:text="Established : "
+                        android:layout_height="wrap_content"
+                />
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/football_est"
+                        android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardElevation="10dp"
+                android:id="@+id/crd_fre"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/crd_est"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/crd_cs"
+                android:layout_marginBottom="16dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:text="First Recorded Event : "
+                        android:layout_height="wrap_content"
+                />
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/football_fre"
+                        android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardElevation="10dp"
+                android:id="@+id/crd_cs"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/crd_fre"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/crd_l"
+                android:layout_marginBottom="16dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:text="Current Season : "
+                        android:layout_height="wrap_content"
+                />
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/football_cs"
+                        android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardElevation="10dp"
+                android:id="@+id/crd_l"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/crd_cs"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/crd_desc"
+                android:layout_marginBottom="16dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:text="Location : "
+                        android:layout_height="wrap_content"
+                />
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/football_l"
+                        android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/crd_desc"
+                app:layout_constraintTop_toBottomOf="@id/crd_l"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="24dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:text="Description : "
+                        android:layout_height="wrap_content"
+                />
+                <TextView
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/football_desc"
+                        android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
