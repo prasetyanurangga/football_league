@@ -58,6 +58,7 @@
                         android:layout_width="wrap_content"
                         android:id="@+id/event_home_skor"
                         android:textSize="25dp"
+                        android:text="-"
                         android:layout_toStartOf="@+id/titik_2"
                         android:layout_centerVertical="true"
                         android:layout_height="wrap_content"/>
@@ -72,6 +73,7 @@
                         android:layout_height="wrap_content"/>
                 <TextView
                         android:textSize="25dp"
+                        android:text="-"
                         android:layout_width="wrap_content"
                         android:id="@+id/event_away_skor"
                         android:layout_toEndOf="@+id/titik_2"

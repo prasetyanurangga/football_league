@@ -8,14 +8,45 @@
         android:orientation="vertical"
         tools:context=".ui.view.MatchActivity">
 
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:id="@+id/tlb_match"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_arrow_back"
+                    android:layout_width="30dp"
+                    android:elevation="10dp"
+                    android:id="@+id/btn_go_back"
+                    android:layout_height="30dp"/>
+
+            <ImageView
+                    android:tooltipText="Search Event"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_search"
+                    android:layout_width="30dp"
+                    android:elevation="10dp"
+                    android:id="@+id/btn_event_search"
+                    android:layout_height="30dp"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-    android:orientation="vertical"
+            android:orientation="vertical"
             android:padding="10dp"
-    android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary">
 
-        <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="#ffff"
                 android:elevation="10dp"
                 app:cardCornerRadius="10dp"

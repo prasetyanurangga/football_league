@@ -12,6 +12,6 @@ data class TeamModel(
     val IdTeam: String,
     @SerializedName("strTeam")
     val NameTeam: String,
-    @SerializedName("strTeamLogo")
+    @SerializedName("strTeamBadge")
     val LogoUri: String
 )

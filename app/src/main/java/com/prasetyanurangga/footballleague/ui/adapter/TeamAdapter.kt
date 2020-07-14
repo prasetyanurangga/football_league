@@ -39,11 +39,5 @@ class TeamAdapter (
 
     override fun onBindViewHolder(holder: footBallViewHolder, position: Int) {
         holder.bindItem(items[position], context)
-//        holder.itemView.setOnClickListener { view ->
-//            val intent: Intent = Intent(context, DetailActivity::class.java)
-//            intent.putExtra("position", position)
-//            context.startActivity(intent)
-//
-//        }
     }
 }

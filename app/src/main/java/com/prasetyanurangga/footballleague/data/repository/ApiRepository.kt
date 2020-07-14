@@ -7,7 +7,6 @@ import com.prasetyanurangga.footballleague.data.service.ApiService
 
 class ApiRepository(private val apiService: ApiService) {
 
-
     suspend fun getLeagues(id: String): List<LeagueModel> {
         return apiService.getLeagues(id).items
     }
@@ -20,7 +19,20 @@ class ApiRepository(private val apiService: ApiService) {
         return apiService.getEventNexts(id).items
     }
 
+    suspend fun getEventDetails(id: String): List<EventModel> {
+        return apiService.getEventDetails(id).items
+    }
+
+
+    suspend fun getSearchEvents(e: String): List<EventModel> {
+        return apiService.getSearchEvents(e).items
+    }
+
     suspend fun getTeams(id: String): List<TeamModel> {
         return apiService.getTeams(id).items
+    }
+
+    suspend fun getDetailTeams(id: String): List<TeamModel> {
+        return apiService.getDetailTeams(id).items
     }
 }

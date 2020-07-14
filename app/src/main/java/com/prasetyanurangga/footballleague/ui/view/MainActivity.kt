@@ -5,23 +5,23 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.prasetyanurangga.footballleague.R
-import com.prasetyanurangga.footballleague.ui.adapter.footballAdapter
-import com.prasetyanurangga.footballleague.data.local.footballData
-import com.prasetyanurangga.footballleague.data.model.footballModel
+import com.prasetyanurangga.footballleague.ui.adapter.FootballAdapter
+import com.prasetyanurangga.footballleague.data.local.FootballData
+import com.prasetyanurangga.footballleague.data.model.FootballModel
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var footballDatas:  List<footballModel>
+    lateinit var footballDatas:  List<FootballModel>
     lateinit var listLeague : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        footballDatas = footballData.getData()
+        footballDatas = FootballData.getData()
 
         listLeague =  findViewById(R.id.list_league)
         listLeague.layoutManager = GridLayoutManager(this@MainActivity, 2)
-        listLeague.adapter = footballAdapter(
+        listLeague.adapter = FootballAdapter(
             this@MainActivity,
             footballDatas
         )

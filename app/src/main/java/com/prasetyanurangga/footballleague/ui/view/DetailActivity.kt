@@ -12,9 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.prasetyanurangga.footballleague.R
 import com.prasetyanurangga.footballleague.data.factory.FootballViewModelFactory
-import com.prasetyanurangga.footballleague.data.local.footballData
+import com.prasetyanurangga.footballleague.data.local.FootballData
 import com.prasetyanurangga.footballleague.data.model.LeagueModel
-import com.prasetyanurangga.footballleague.data.model.footballModel
+import com.prasetyanurangga.footballleague.data.model.FootballModel
 import com.prasetyanurangga.footballleague.data.network.RetrofitBuilder
 import com.prasetyanurangga.footballleague.data.repository.ApiRepository
 import com.prasetyanurangga.footballleague.ui.viewmodel.FootballViewModel
@@ -25,7 +25,7 @@ class DetailActivity : AppCompatActivity(){
 
     private lateinit var leagueViewModel: FootballViewModel
 
-    lateinit var footballDatas : List<footballModel>
+    lateinit var footballDatas : List<FootballModel>
     lateinit var txt_name : TextView
     lateinit var txt_desc : TextView
     lateinit var txt_est : TextView
@@ -33,28 +33,17 @@ class DetailActivity : AppCompatActivity(){
     lateinit var txt_cs : TextView
     lateinit var txt_l : TextView
     lateinit var img_fb : ImageView
-    lateinit var btn_go_back : ImageView
-    lateinit var btn_go_event : ImageView
     lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_detail)
-
-        this.getSupportActionBar()?.hide();
-
         createViewModel()
         setProgressDialog()
-
-        footballDatas = footballData.getData()
+        footballDatas = FootballData.getData()
         val position = intent.getIntExtra("position",0)
+        val idLeague = if (!intent.getStringExtra("idLeague").isNullOrEmpty()) intent.getStringExtra("idLeague") else footballDatas[position].id.toString()
 
-
-
-
-        btn_go_back = findViewById<ImageView>(R.id.football_go_back)
-        btn_go_event = findViewById<ImageView>(R.id.football_go_event)
         txt_name = findViewById<TextView>(R.id.football_name)
         txt_desc = findViewById<TextView>(R.id.football_desc)
         txt_est = findViewById<TextView>(R.id.football_est)
@@ -63,21 +52,14 @@ class DetailActivity : AppCompatActivity(){
         txt_l = findViewById<TextView>(R.id.football_l)
         img_fb = findViewById<ImageView>(R.id.football_image)
 
-        setDetailLeague(footballDatas[position].id.toString())
+        setDetailLeague(idLeague!!)
 
-        btn_go_back.setOnClickListener {
+        findViewById<ImageView>(R.id.football_go_back).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-        btn_go_event.setOnClickListener {
-            val intent: Intent = Intent(this, MatchActivity::class.java)
-            intent.putExtra("idLeague", footballDatas[position].id.toString())
-            startActivity(intent)
+        findViewById<ImageView>(R.id.football_go_event).setOnClickListener {
+            onBackPressed()
         }
-
-
-
-
-
     }
 
     private fun createViewModel()
@@ -108,7 +90,6 @@ class DetailActivity : AppCompatActivity(){
     private fun updateUI(leagueModels: List<LeagueModel>)
     {
         leagueModels.forEach {leagueModel ->
-            Log.e("Image",leagueModel.LogoUri )
             txt_name.setText(leagueModel.NameLeague)
             txt_desc.setText(leagueModel.Description)
             txt_est.setText(leagueModel.FormedYear)

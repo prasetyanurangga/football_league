@@ -43,7 +43,6 @@ class NextMatchFragment(private val idLeague: String?) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         listEvent =  view.findViewById(R.id.list_event)
         createViewModel()
         setListEvent(idLeague, activity)
@@ -61,20 +60,14 @@ class NextMatchFragment(private val idLeague: String?) : Fragment() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-//                        progressDialog.hide()
-                        Log.e("daa","data gak error")
                         resource.data?.let { events ->
-
-                            Log.e("daa",events.toString())
                             updateUI(events, context)
                         }
                     }
                     Status.ERROR -> {
-//                        progressDialog.hide()
                         Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
-//                        progressDialog.show()
                     }
                 }
             }

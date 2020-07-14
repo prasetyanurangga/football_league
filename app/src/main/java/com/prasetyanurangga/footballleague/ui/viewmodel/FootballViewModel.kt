@@ -18,7 +18,33 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         }
         catch (exception: Exception)
         {
-            emit(Resource.error(data = null, message = exception.message ?: "Errror"))
+            emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
+        }
+    }
+
+    fun getSearchEvent(e: String) = liveData(Dispatchers.IO){
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(
+                data = apiRepository.getSearchEvents(e)
+            ))
+        }
+        catch (exception: Exception)
+        {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
+        }
+    }
+
+    fun getEventDetails(id: String) = liveData(Dispatchers.IO){
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(
+                data = apiRepository.getEventDetails(id)
+            ))
+        }
+        catch (exception: Exception)
+        {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
     }
 
@@ -31,7 +57,7 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         }
         catch (exception: Exception)
         {
-            emit(Resource.error(data = null, message = exception.message ?: "Errror"))
+            emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
     }
 
@@ -45,7 +71,7 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         catch (exception: Exception)
         {
             Log.e("e", exception.message.toString())
-            emit(Resource.error(data = null, message = exception.message ?: "Errror"))
+            emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
     }
 
@@ -58,7 +84,20 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         }
         catch (exception: Exception)
         {
-            emit(Resource.error(data = null, message = exception.message ?: "Errror"))
+            emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
+        }
+    }
+
+    fun getDetailTeam(id: String) = liveData(Dispatchers.IO){
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(
+                data = apiRepository.getDetailTeams(id)
+            ))
+        }
+        catch (exception: Exception)
+        {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
     }
 }

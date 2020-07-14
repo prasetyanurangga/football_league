@@ -83,7 +83,6 @@ class LastMatchFragment(private val idLeague: String?) : Fragment() {
 
     private fun updateUI(eventModel: List<EventModel>, context: Context?)
     {
-        Log.e("datanya", eventModel.toString())
         listEvent.layoutManager = LinearLayoutManager(context)
         listEvent.adapter = EventAdapter(
             context!!,

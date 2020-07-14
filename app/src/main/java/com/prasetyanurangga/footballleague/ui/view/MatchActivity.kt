@@ -1,14 +1,15 @@
 package com.prasetyanurangga.footballleague.ui.view
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.view.Menu
+import android.widget.*
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +31,7 @@ class MatchActivity : AppCompatActivity() {
     lateinit var listTeam : RecyclerView
     private lateinit var teamViewModel: FootballViewModel
     lateinit var progressDialog: ProgressDialog
+    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,17 @@ class MatchActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
+        findViewById<ImageView>(R.id.btn_event_search).setOnClickListener {
+            val intent: Intent = Intent(this, SearchMatch::class.java)
+            intent.putExtra("idLeague", idLeague)
+            startActivity(intent)
+        }
+
+        findViewById<ImageView>(R.id.btn_go_back).setOnClickListener {
+            val intent: Intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("idLeague", idLeague)
+            startActivity(intent)
+        }
 
         setProgressDialog()
         listTeam =  findViewById(R.id.list_team)
@@ -54,6 +67,23 @@ class MatchActivity : AppCompatActivity() {
 
 
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        return super.onCreateOptionsMenu(menu)
+//        menuInflater.inflate(R.menu.menu_search, menu)
+//        val search = menu?.findItem(R.id.appSearchBar)
+//        val searchView = search?.actionView as SearchView
+//        searchView.queryHint = "Search"
+//        searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(p0: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(p0: String?): Boolean {
+//                return false
+//            }
+//        })
+//    }
 
     private fun createViewModel()
     {

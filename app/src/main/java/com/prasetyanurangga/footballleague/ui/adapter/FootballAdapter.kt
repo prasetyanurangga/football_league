@@ -10,11 +10,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.prasetyanurangga.footballleague.ui.view.DetailActivity
 import com.prasetyanurangga.footballleague.R
-import com.prasetyanurangga.footballleague.data.model.footballModel
+import com.prasetyanurangga.footballleague.data.model.FootballModel
 
-class footballAdapter (
+class FootballAdapter (
     val context: Context,
-    val items: List<footballModel>) : RecyclerView.Adapter<footballAdapter.footBallViewHolder>(){
+    val items: List<FootballModel>) : RecyclerView.Adapter<FootballAdapter.footBallViewHolder>(){
 
 
     class footBallViewHolder(view:View) : RecyclerView.ViewHolder(view){
@@ -22,7 +22,7 @@ class footballAdapter (
         private  val footBallImage: ImageView = view.findViewById(R.id.football_image)
         private val footBallName: TextView = view.findViewById(R.id.football_name)
 
-        fun bindItem(items: footballModel){
+        fun bindItem(items: FootballModel){
             footBallName.text = items.name
             footBallImage.setImageResource(items.imageDrawable)
 
