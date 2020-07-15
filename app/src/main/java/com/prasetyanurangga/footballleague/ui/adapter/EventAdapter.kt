@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.prasetyanurangga.footballleague.R
 import com.prasetyanurangga.footballleague.data.model.EventModel
 import com.prasetyanurangga.footballleague.ui.view.DetailMatchActivity
+import com.prasetyanurangga.footballleague.utils.Convert
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -34,10 +35,7 @@ class EventAdapter (
         private val eventTime: TextView = view.findViewById(R.id.event_time)
 
         fun bindItem(items: EventModel){
-            val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
-            val myDate: Date = simpleDateFormat.parse(items.DateEvent+" "+items.TimeEvent)
-            val formatter = SimpleDateFormat("dd MMM yyyy HH:mm:ss z", Locale.getDefault())
+
 
             eventName.text = items.NameEvent
             eventHomeName.text = items.HomeTeam
@@ -45,7 +43,7 @@ class EventAdapter (
             eventHomeSkor.text = if  (items.HomeScore.isNullOrEmpty()) "-" else items.HomeScore
             eventAwaySkor.text = if  (items.AwayScore.isNullOrEmpty()) "-" else items.AwayScore
             eventLeague.text = items.NameLeague
-            eventTime.text = formatter.format(myDate)
+            eventTime.text = Convert.convertDateLocalGTM(time = items.TimeEvent,date = items.DateEvent)
 
         }
 

@@ -15,7 +15,7 @@
                 android:name=".ui.view.DetailMatchActivity"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".ui.view.SearchMatch">
+        <activity android:name=".ui.view.SearchMatchActivity">
         </activity>
         <activity android:name=".ui.view.MainActivity">
             <intent-filter>

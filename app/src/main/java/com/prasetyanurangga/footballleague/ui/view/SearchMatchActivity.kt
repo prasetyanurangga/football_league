@@ -23,7 +23,7 @@ import com.prasetyanurangga.footballleague.ui.adapter.EventAdapter
 import com.prasetyanurangga.footballleague.ui.viewmodel.FootballViewModel
 import com.prasetyanurangga.footballleague.utils.Status
 
-class SearchMatch : AppCompatActivity() {
+class SearchMatchActivity : AppCompatActivity() {
 
     lateinit var listEvent : RecyclerView
     lateinit var txtNotFound : TextView

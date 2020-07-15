@@ -4,7 +4,6 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import android.widget.*
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
@@ -53,7 +52,7 @@ class MatchActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
 
         findViewById<ImageView>(R.id.btn_event_search).setOnClickListener {
-            val intent: Intent = Intent(this, SearchMatch::class.java)
+            val intent: Intent = Intent(this, SearchMatchActivity::class.java)
             intent.putExtra("idLeague", idLeague)
             startActivity(intent)
         }

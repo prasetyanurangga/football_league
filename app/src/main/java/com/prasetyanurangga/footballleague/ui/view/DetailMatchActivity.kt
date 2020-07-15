@@ -21,6 +21,7 @@ import com.prasetyanurangga.footballleague.data.network.RetrofitBuilder
 import com.prasetyanurangga.footballleague.data.repository.ApiRepository
 import com.prasetyanurangga.footballleague.ui.adapter.EventAdapter
 import com.prasetyanurangga.footballleague.ui.viewmodel.FootballViewModel
+import com.prasetyanurangga.footballleague.utils.Convert
 import com.prasetyanurangga.footballleague.utils.Status
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
@@ -96,8 +97,6 @@ class DetailMatchActivity : AppCompatActivity() {
 
     private fun updateUI(eventModels: List<EventModel>)
     {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
         val txt_home = findViewById<TextView>(R.id.event_home)
         val txt_away = findViewById<TextView>(R.id.event_away)
         val txt_home_skor = findViewById<TextView>(R.id.event_home_skor)
@@ -119,10 +118,8 @@ class DetailMatchActivity : AppCompatActivity() {
 
         eventModels.forEach {eventModel ->
 
-            val myDate: Date = simpleDateFormat.parse(eventModel.DateEvent+" "+eventModel.TimeEvent)
-            val formatter = SimpleDateFormat("dd MMM yyyy HH:mm:ss z", Locale.getDefault())
             txt_name.text = eventModel.NameLeague
-            txt_date.text = formatter.format(myDate)
+            txt_date.text = Convert.convertDateLocalGTM(time = eventModel.TimeEvent,date = eventModel.DateEvent)
             txt_home.text = eventModel.HomeTeam
             txt_away.text = eventModel.AwayTeam
             txt_formation_home.text = if  (eventModel.HomeFormation.isNullOrEmpty()) "-" else eventModel.HomeFormation
