@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.prasetyanurangga.footballleague.R
 import com.prasetyanurangga.footballleague.data.factory.FootballViewModelFactory
+import com.prasetyanurangga.footballleague.data.local.FootballData
+import com.prasetyanurangga.footballleague.data.model.FootballModel
 import com.prasetyanurangga.footballleague.data.model.LeagueModel
 import com.prasetyanurangga.footballleague.data.model.TeamModel
 import com.prasetyanurangga.footballleague.data.network.RetrofitBuilder
@@ -32,13 +34,15 @@ class MatchActivity : AppCompatActivity() {
     private lateinit var teamViewModel: FootballViewModel
     lateinit var progressDialog: ProgressDialog
     lateinit var toolbar: Toolbar
+    lateinit var footballDatas : List<FootballModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match)
 
-
-        val idLeague = intent.getStringExtra("idLeague")
+        footballDatas = FootballData.getData()
+        val position = intent.getIntExtra("position",0)
+        val idLeague = if (!intent.getStringExtra("idLeague").isNullOrEmpty()) intent.getStringExtra("idLeague") else footballDatas[position].id.toString()
 
         val sectionsPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         sectionsPagerAdapter.populateFragment(LastMatchFragment(idLeague), "Last Match", this)
@@ -56,6 +60,12 @@ class MatchActivity : AppCompatActivity() {
 
         findViewById<ImageView>(R.id.btn_go_back).setOnClickListener {
             val intent: Intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("idLeague", idLeague)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.btn_detail_league).setOnClickListener {
+            val intent: Intent = Intent(this, DetailLeagueActivity::class.java)
             intent.putExtra("idLeague", idLeague)
             startActivity(intent)
         }
@@ -158,7 +168,7 @@ class MatchActivity : AppCompatActivity() {
     }
     fun setProgressDialog()
     {
-        progressDialog = ProgressDialog(this@MatchActivity)
+        progressDialog = ProgressDialog(this)
         progressDialog.setCancelable(false)
         progressDialog.setMessage("Please Wait ...")
 

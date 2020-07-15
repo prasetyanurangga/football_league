@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.prasetyanurangga.footballleague.ui.view.DetailActivity
 import com.prasetyanurangga.footballleague.R
 import com.prasetyanurangga.footballleague.data.model.FootballModel
+import com.prasetyanurangga.footballleague.ui.view.MatchActivity
 
 class FootballAdapter (
     val context: Context,
@@ -41,7 +41,7 @@ class FootballAdapter (
     override fun onBindViewHolder(holder: footBallViewHolder, position: Int) {
         holder.bindItem(items[position])
         holder.itemView.setOnClickListener { view ->
-            val intent: Intent = Intent(context, DetailActivity::class.java)
+            val intent: Intent = Intent(context, MatchActivity::class.java)
             intent.putExtra("position", position)
             context.startActivity(intent)
 

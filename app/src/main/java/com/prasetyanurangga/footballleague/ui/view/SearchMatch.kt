@@ -111,7 +111,7 @@ class SearchMatch : AppCompatActivity() {
 
     fun setProgressDialog()
     {
-        progressDialog = ProgressDialog(this@SearchMatch)
+        progressDialog = ProgressDialog(this)
         progressDialog.setCancelable(false)
         progressDialog.setMessage("Please Wait ...")
 

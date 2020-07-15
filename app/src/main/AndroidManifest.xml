@@ -28,7 +28,7 @@
                 android:name=".ui.view.MatchActivity"
                 android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-                android:name=".ui.view.DetailActivity"
+                android:name=".ui.view.DetailLeagueActivity"
                 android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

@@ -77,8 +77,6 @@ class DetailMatchActivity : AppCompatActivity() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-
-//
                         resource.data?.let { teams ->
                             teams.forEach { team ->
                                 Picasso.with(this).load(team.LogoUri).into(imageView)
@@ -131,8 +129,6 @@ class DetailMatchActivity : AppCompatActivity() {
             txt_formation_away.text = if  (eventModel.AwayFormation.isNullOrEmpty()) "-" else eventModel.AwayFormation
             txt_home_skor.text = if  (eventModel.HomeScore.isNullOrEmpty()) "-" else eventModel.HomeScore
             txt_away_skor.text = if  (eventModel.AwayScore.isNullOrEmpty()) "-" else eventModel.AwayScore
-            setLogoTeam(eventModel.IdHome, img_home)
-            setLogoTeam(eventModel.IdAway, img_away)
             txt_shot_home.text = if  (eventModel.HomeShot.isNullOrEmpty()) "-" else eventModel.HomeShot
             txt_shot_away.text = if  (eventModel.AwayShot.isNullOrEmpty()) "-" else eventModel.AwayShot
             txt_goal_home.text = if  (eventModel.HomeGoal.isNullOrEmpty()) "-" else eventModel.HomeGoal
@@ -141,7 +137,8 @@ class DetailMatchActivity : AppCompatActivity() {
             txt_red_away.text = if  (eventModel.AwayRed.isNullOrEmpty()) "-" else eventModel.AwayRed
             txt_yellow_home.text = if  (eventModel.HomeYellow.isNullOrEmpty()) "-" else eventModel.HomeYellow
             txt_yellow_away.text = if  (eventModel.AwayYellow.isNullOrEmpty()) "-" else eventModel.AwayYellow
-
+            setLogoTeam(eventModel.IdHome, img_home)
+            setLogoTeam(eventModel.IdAway, img_away)
         }
 
     }

@@ -26,16 +26,6 @@
                     android:elevation="10dp"
                     android:id="@+id/football_go_back"
                     android:layout_height="30dp"/>
-
-            <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/trophy_white"
-                    android:layout_width="30dp"
-                    android:elevation="10dp"
-                    android:id="@+id/football_go_event"
-                    android:layout_height="30dp"/>
         </RelativeLayout>
 
         <ImageView
