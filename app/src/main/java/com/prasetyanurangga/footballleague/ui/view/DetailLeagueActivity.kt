@@ -1,5 +1,6 @@
 package com.prasetyanurangga.footballleague.ui.view
 
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.prasetyanurangga.footballleague.R
@@ -29,7 +31,7 @@ class DetailLeagueActivity : AppCompatActivity(){
     lateinit var txt_cs : TextView
     lateinit var txt_l : TextView
     lateinit var img_fb : ImageView
-    lateinit var progressDialog: ProgressDialog
+    lateinit var progressDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,11 +65,11 @@ class DetailLeagueActivity : AppCompatActivity(){
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        progressDialog.hide()
+                        progressDialog.dismiss()
                         resource.data?.let { leagues -> updateUI(leagues) }
                     }
                     Status.ERROR -> {
-                        progressDialog.hide()
+                        progressDialog.dismiss()
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
@@ -93,9 +95,12 @@ class DetailLeagueActivity : AppCompatActivity(){
 
     fun setProgressDialog()
     {
-        progressDialog = ProgressDialog(this)
-        progressDialog.setCancelable(false)
-        progressDialog.setMessage("Please Wait ...")
+        val builder =
+            AlertDialog.Builder(this@DetailLeagueActivity)
+        //View view = getLayoutInflater().inflate(R.layout.progress);
+        //View view = getLayoutInflater().inflate(R.layout.progress);
+        builder.setView(R.layout.progress)
+        progressDialog = builder.create()
 
     }
 }

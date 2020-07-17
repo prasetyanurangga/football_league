@@ -11,16 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.prasetyanurangga.footballleague.R
 import com.prasetyanurangga.footballleague.data.model.EventModel
 import com.prasetyanurangga.footballleague.ui.view.DetailMatchActivity
-import com.prasetyanurangga.footballleague.ui.view.FavoriteMatchActivity
 import com.prasetyanurangga.footballleague.utils.Convert
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
-class EventAdapter (
+class EventLocalAdapter (
     val context: Context,
-    val items: List<EventModel>) : RecyclerView.Adapter<EventAdapter.footBallViewHolder>(){
+    val items: List<EventModel>) : RecyclerView.Adapter<EventLocalAdapter.footBallViewHolder>(){
 
 
     class footBallViewHolder(view:View) : RecyclerView.ViewHolder(view){
@@ -63,10 +58,10 @@ class EventAdapter (
     override fun onBindViewHolder(holder: footBallViewHolder, position: Int) {
         holder.bindItem(items[position])
         holder.itemView.setOnClickListener { view ->
-                val intent: Intent = Intent(context, DetailMatchActivity::class.java)
-                intent.putExtra("idEvent", items[position].IdEvent)
-                intent.putExtra("isLocal", false)
-                context.startActivity(intent)
+            val intent: Intent = Intent(context, DetailMatchActivity::class.java)
+            intent.putExtra("idEvent", items[position].IdEvent)
+            intent.putExtra("isLocal", true)
+            context.startActivity(intent)
 
         }
     }

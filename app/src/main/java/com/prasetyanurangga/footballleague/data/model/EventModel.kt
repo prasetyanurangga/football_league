@@ -1,5 +1,8 @@
 package com.prasetyanurangga.footballleague.data.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class EventResponses(
@@ -11,47 +14,101 @@ data class EventResponse(
     val items: List<EventModel>
 )
 
+@Entity(
+    tableName = "Event"
+)
 data class EventModel(
+    @PrimaryKey()
+    @ColumnInfo(name ="idEvent")
     @SerializedName("idEvent")
     val IdEvent: String,
+
+    @ColumnInfo(name ="strEvent")
     @SerializedName("strEvent")
     val NameEvent: String,
+
+    @ColumnInfo(name ="strLeague")
     @SerializedName("strLeague")
     val NameLeague: String,
+
+    @ColumnInfo(name ="strHomeTeam")
     @SerializedName("strHomeTeam")
     val HomeTeam: String,
+
+    @ColumnInfo(name ="strAwayTeam")
     @SerializedName("strAwayTeam")
     val AwayTeam: String,
+
+    @ColumnInfo(name ="intHomeScore")
     @SerializedName("intHomeScore")
-    val HomeScore: String,
+    var HomeScore: String,
+
+    @ColumnInfo(name ="intAwayScore")
     @SerializedName("intAwayScore")
-    val AwayScore: String,
+    var AwayScore: String,
+
+    @ColumnInfo(name ="strTime")
     @SerializedName("strTime")
     val TimeEvent: String,
+
+    @ColumnInfo(name ="dateEvent")
     @SerializedName("dateEvent")
     val DateEvent: String,
+
+    @ColumnInfo(name ="strHomeFormation")
     @SerializedName("strHomeFormation")
-    val HomeFormation: String,
+    var HomeFormation: String,
+
+    @ColumnInfo(name ="strAwayFormation")
     @SerializedName("strAwayFormation")
-    val AwayFormation: String,
+    var AwayFormation: String,
+
+    @ColumnInfo(name ="idHomeTeam")
     @SerializedName("idHomeTeam")
     val IdHome: String,
+
+    @ColumnInfo(name ="idAwayTeam")
     @SerializedName("idAwayTeam")
     val IdAway: String,
+
+    @ColumnInfo(name ="intHomeShots")
     @SerializedName("intHomeShots")
-    val HomeShot: String,
+    var HomeShot: String,
+
+    @ColumnInfo(name ="intAwayShots")
     @SerializedName("intAwayShots")
-    val AwayShot: String,
+    var AwayShot: String,
+
+    @ColumnInfo(name ="strHomeGoalDetails")
     @SerializedName("strHomeGoalDetails")
-    val HomeGoal: String,
+    var HomeGoal: String,
+
+    @ColumnInfo(name ="strAwayGoalDetails")
     @SerializedName("strAwayGoalDetails")
-    val AwayGoal: String,
+    var AwayGoal: String,
+
+    @ColumnInfo(name ="strHomeRedCards")
     @SerializedName("strHomeRedCards")
-    val HomeRed: String,
+    var HomeRed: String,
+
+    @ColumnInfo(name ="strAwayRedCards")
     @SerializedName("strAwayRedCards")
-    val AwayRed: String,
+    var AwayRed: String,
+
+    @ColumnInfo(name ="strHomeYellowCards")
     @SerializedName("strHomeYellowCards")
-    val HomeYellow: String,
+    var HomeYellow: String,
+
+    @ColumnInfo(name ="strAwayYellowCards")
     @SerializedName("strAwayYellowCards")
-    val AwayYellow: String
+    var AwayYellow: String,
+
+    @ColumnInfo(name ="idLeague")
+    @SerializedName("idLeague")
+    val IdLeague: String,
+
+    @ColumnInfo(name ="ImgHome")
+    var ImgHome: String,
+    @ColumnInfo(name ="ImgAway")
+    var ImgAway: String
 )

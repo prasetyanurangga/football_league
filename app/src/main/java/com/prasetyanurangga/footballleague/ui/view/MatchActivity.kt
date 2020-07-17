@@ -1,10 +1,12 @@
 package com.prasetyanurangga.footballleague.ui.view
 
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +33,7 @@ class MatchActivity : AppCompatActivity() {
 
     lateinit var listTeam : RecyclerView
     private lateinit var teamViewModel: FootballViewModel
-    lateinit var progressDialog: ProgressDialog
+    lateinit var progressDialog: Dialog
     lateinit var toolbar: Toolbar
     lateinit var footballDatas : List<FootballModel>
 
@@ -65,6 +67,12 @@ class MatchActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn_detail_league).setOnClickListener {
             val intent: Intent = Intent(this, DetailLeagueActivity::class.java)
+            intent.putExtra("idLeague", idLeague)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.btn_fav_league).setOnClickListener {
+            val intent: Intent = Intent(this, FavoriteMatchActivity::class.java)
             intent.putExtra("idLeague", idLeague)
             startActivity(intent)
         }
@@ -128,11 +136,11 @@ class MatchActivity : AppCompatActivity() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        progressDialog.hide()
+                        progressDialog.dismiss()
                         resource.data?.let { leagues -> updateLeague(leagues) }
                     }
                     Status.ERROR -> {
-                        progressDialog.hide()
+                        progressDialog.dismiss()
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
@@ -167,9 +175,12 @@ class MatchActivity : AppCompatActivity() {
     }
     fun setProgressDialog()
     {
-        progressDialog = ProgressDialog(this)
-        progressDialog.setCancelable(false)
-        progressDialog.setMessage("Please Wait ...")
+        val builder =
+            AlertDialog.Builder(this@MatchActivity)
+        //View view = getLayoutInflater().inflate(R.layout.progress);
+        //View view = getLayoutInflater().inflate(R.layout.progress);
+        builder.setView(R.layout.progress)
+        progressDialog = builder.create()
 
     }
 

@@ -29,6 +29,15 @@
                         android:elevation="10dp"
                         android:id="@+id/btn_go_back"
                         android:layout_height="30dp"/>
+                <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:elevation="10dp"
+                        android:id="@+id/btn_favorite"
+                        android:layout_height="30dp"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
