@@ -26,7 +26,7 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         emit(Resource.loading(data = null))
         try {
             emit(Resource.success(
-                data = apiRepository.getSearchEvents(e)
+                data = apiRepository.getSearchEvents(e).filter { it.SportName == "Soccer" }
             ))
         }
         catch (exception: Exception)

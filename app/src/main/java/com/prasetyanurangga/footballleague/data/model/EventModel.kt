@@ -107,6 +107,9 @@ data class EventModel(
     @SerializedName("idLeague")
     val IdLeague: String,
 
+    @SerializedName("strSport")
+    val SportName: String,
+
     @ColumnInfo(name ="ImgHome")
     var ImgHome: String,
     @ColumnInfo(name ="ImgAway")
