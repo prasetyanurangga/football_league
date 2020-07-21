@@ -83,12 +83,12 @@ class DetailLeagueActivity : AppCompatActivity(){
     private fun updateUI(leagueModels: List<LeagueModel>)
     {
         leagueModels.forEach {leagueModel ->
-            txt_name.setText(leagueModel.NameLeague)
-            txt_desc.setText(leagueModel.Description)
-            txt_est.setText(leagueModel.FormedYear)
-            txt_fre.setText(leagueModel.FistEvent)
-            txt_cs.setText(leagueModel.CurrentSeason)
-            txt_l.setText(leagueModel.Country)
+            txt_name.text = leagueModel.NameLeague
+            txt_desc.text = leagueModel.Description
+            txt_est.text = leagueModel.FormedYear
+            txt_fre.text = leagueModel.FistEvent
+            txt_cs.text = leagueModel.CurrentSeason
+            txt_l.text = leagueModel.Country
             Picasso.with(this).load(leagueModel.LogoUri).into(img_fb)
         }
     }

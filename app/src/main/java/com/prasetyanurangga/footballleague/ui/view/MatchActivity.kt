@@ -168,8 +168,8 @@ class MatchActivity : AppCompatActivity() {
         val img_fb = findViewById<ImageView>(R.id.football_image)
         leagueModels.forEach {leagueModel ->
             Log.e("Image",leagueModel.LogoUri )
-            txt_name.setText(leagueModel.NameLeague)
-            txt_desc.setText(leagueModel.Description.toString().subSequence(0,100))
+            txt_name.text = leagueModel.NameLeague
+            txt_desc.text = leagueModel.Description.toString().subSequence(0,100)
             Picasso.with(this).load(leagueModel.LogoUri).into(img_fb)
         }
     }

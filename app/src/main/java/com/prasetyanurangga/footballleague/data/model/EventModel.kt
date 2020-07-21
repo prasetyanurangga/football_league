@@ -111,7 +111,7 @@ data class EventModel(
     val SportName: String,
 
     @ColumnInfo(name ="ImgHome")
-    var ImgHome: String,
+    var ImgHome: String?,
     @ColumnInfo(name ="ImgAway")
-    var ImgAway: String
+    var ImgAway: String?
 )

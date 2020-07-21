@@ -1,17 +1,16 @@
 package com.prasetyanurangga.footballleague.ui.view
 
 import android.app.Dialog
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,7 +38,7 @@ class SearchMatchActivity : AppCompatActivity() {
         supportActionBar?.title = "Search Event"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        listEvent =  findViewById(R.id.list_event)
+        listEvent =  findViewById(R.id.list_event_search)
         txtNotFound =  findViewById(R.id.txt_not_found)
         createViewModel()
 
@@ -104,7 +103,12 @@ class SearchMatchActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
-                return false
+                if(p0.isNullOrEmpty())
+                {
+                    txtNotFound.visibility = View.VISIBLE
+                    listEvent.visibility = View.GONE
+                }
+                return true
             }
         } )
 

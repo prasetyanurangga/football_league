@@ -27,11 +27,6 @@ class LastMatchFragment(private val idLeague: String?) : Fragment() {
     lateinit var listEvent : RecyclerView
     private lateinit var eventViewModel: FootballViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
