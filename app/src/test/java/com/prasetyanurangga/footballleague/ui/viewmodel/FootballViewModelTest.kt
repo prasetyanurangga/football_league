@@ -11,9 +11,8 @@ import com.prasetyanurangga.footballleague.data.repository.ApiRepository
 import com.prasetyanurangga.footballleague.ui.view.DetailLeagueActivity
 import com.prasetyanurangga.footballleague.utils.Resource
 import com.prasetyanurangga.footballleague.utils.Status
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.*
 import org.junit.rules.TestRule
@@ -94,83 +93,105 @@ class FootballViewModelTest {
 
     )
 
+    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+
 
     @Before
     fun setUp(){
         MockitoAnnotations.initMocks(this)
-        Dispatchers.setMain(Dispatchers.Unconfined)
+        Dispatchers.setMain(mainThreadSurrogate)
         apiRepository = mock(ApiRepository(RetrofitBuilder.apiService)::class.java);
         viewModel = FootballViewModel(apiRepository);
     }
 
+    @After
+    fun tearDown(){
+        Dispatchers.resetMain()
+        mainThreadSurrogate.close()
+    }
+
 
     @Test
-    fun getLeague_haveSuccessResult() {
-
-        testCoroutineRule.runBlockingTest {
-            val listDummy = listOf<LeagueModel>(dummyLeague)
-            `when`(apiRepository.getLeagues("1")).thenReturn(listDummy)
-            val result = viewModel.getLeague("1")
-            assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+    fun getLeague() {
+        runBlocking {
+            launch(Dispatchers.IO){
+                val listDummy = listOf<LeagueModel>(dummyLeague)
+                `when`(apiRepository.getLeagues("1")).thenReturn(listDummy)
+                val result = viewModel.getLeague("1")
+                assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+            }
         }
     }
 
     @Test
-    fun getSearchEvent() {
+    fun getSearchEvent()  {
         runBlocking{
-            val listDummy= listOf<EventModel>(dummyEvent)
-            `when`(apiRepository.getSearchEvents("1")).thenReturn(listDummy)
-            val result = viewModel.getSearchEvent("1")
+            launch(Dispatchers.IO){
+                val listDummy= listOf<EventModel>(dummyEvent)
+                `when`(apiRepository.getSearchEvents("1")).thenReturn(listDummy)
+                val result = viewModel.getSearchEvent("1")
+                assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+            }
         }
     }
 
     @Test
     fun getEventDetails() {
-        testCoroutineRule.runBlockingTest {
-            val listDummy    = listOf<EventModel>(dummyEvent)
-            `when`(apiRepository.getEventDetails("1")).thenReturn(listDummy)
-            val result = viewModel.getEventDetails("1")
-            assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+        runBlocking{
+            launch(Dispatchers.IO){
+                val listDummy    = listOf<EventModel>(dummyEvent)
+                `when`(apiRepository.getEventDetails("1")).thenReturn(listDummy)
+                val result = viewModel.getEventDetails("1")
+                assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+            }
         }
     }
 
     @Test
     fun getEvent() {
-        testCoroutineRule.runBlockingTest {
-            val listDummy    = listOf<EventModel>(dummyEvent)
-            `when`(apiRepository.getEvents("1")).thenReturn(listDummy)
-            val result = viewModel.getEvent("1")
-            assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+        runBlocking{
+            launch(Dispatchers.IO){
+                val listDummy    = listOf<EventModel>(dummyEvent)
+                `when`(apiRepository.getEvents("1")).thenReturn(listDummy)
+                val result = viewModel.getEvent("1")
+                assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+            }
         }
     }
 
     @Test
     fun getEventNext() {
-        testCoroutineRule.runBlockingTest {
-            val listDummy    = listOf<EventModel>(dummyEvent)
-            `when`(apiRepository.getEventNexts("1")).thenReturn(listDummy)
-            val result = viewModel.getEventNext("1")
-            assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+        runBlocking {
+            launch(Dispatchers.IO){
+                val listDummy    = listOf<EventModel>(dummyEvent)
+                `when`(apiRepository.getEventNexts("1")).thenReturn(listDummy)
+                val result = viewModel.getEventNext("1")
+                assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+            }
         }
     }
 
     @Test
-    fun getTeam() {
-        testCoroutineRule.runBlockingTest {
-            val listDummy    = listOf<TeamModel>(dummyTeam)
-            `when`(apiRepository.getTeams("1")).thenReturn(listDummy)
-            val result = viewModel.getTeam("1")
-            assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+    fun getTeam(){
+        runBlocking{
+            launch(Dispatchers.IO){
+                val listDummy    = listOf<TeamModel>(dummyTeam)
+                `when`(apiRepository.getTeams("1")).thenReturn(listDummy)
+                val result = viewModel.getTeam("1")
+                assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+            }
         }
     }
 
     @Test
     fun getDetailTeam() {
-        testCoroutineRule.runBlockingTest {
-            val listDummy    = listOf<TeamModel>(dummyTeam)
-            `when`(apiRepository.getDetailTeams("1")).thenReturn(listDummy)
-            val result = viewModel.getDetailTeam("1")
-            assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+        runBlocking{
+            launch(Dispatchers.IO){
+                val listDummy    = listOf<TeamModel>(dummyTeam)
+                `when`(apiRepository.getDetailTeams("1")).thenReturn(listDummy)
+                val result = viewModel.getDetailTeam("1")
+                assert(Resource(status = Status.SUCCESS, data = listDummy, message = null) == result.getOrAwaitValue())
+            }
         }
     }
 
