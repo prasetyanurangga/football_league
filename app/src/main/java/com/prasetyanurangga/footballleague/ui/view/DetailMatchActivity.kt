@@ -68,7 +68,7 @@ class DetailMatchActivity : AppCompatActivity() {
                             Status.ERROR ->{
                                 Toast.makeText(this, "Failed Delete Favorite", Toast.LENGTH_LONG).show()
                             }
-                            Status.LOADING -> {
+                            else -> {
 
                             }
                         }
@@ -91,7 +91,7 @@ class DetailMatchActivity : AppCompatActivity() {
 
                                 Toast.makeText(this, "Failed Add Favorite", Toast.LENGTH_LONG).show()
                             }
-                            Status.LOADING -> {
+                            else -> {
 
                             }
                         }
@@ -128,7 +128,7 @@ class DetailMatchActivity : AppCompatActivity() {
                             Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                             progressDialog.hide()
                         }
-                        Status.LOADING -> {
+                        else -> {
                             progressDialog.show()
                         }
                     }
@@ -149,7 +149,7 @@ class DetailMatchActivity : AppCompatActivity() {
                             Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                             progressDialog.dismiss()
                         }
-                        Status.LOADING -> {
+                        else -> {
                             progressDialog.show()
                         }
                     }
@@ -176,7 +176,7 @@ class DetailMatchActivity : AppCompatActivity() {
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                         imageView.setImageResource(R.drawable.trophy)
                     }
-                    Status.LOADING -> {
+                    else -> {
                     }
                 }
             }
@@ -291,7 +291,7 @@ class DetailMatchActivity : AppCompatActivity() {
                     Status.ERROR -> {
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
-                    Status.LOADING -> {
+                    else -> {
                     }
                 }
             }

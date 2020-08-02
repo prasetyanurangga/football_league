@@ -68,7 +68,7 @@ class LastMatchFragment(private val idLeague: String?) : Fragment() {
 //                        progressDialog.hide()
                         Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                     }
-                    Status.LOADING -> {
+                    else -> {
 //                        progressDialog.show()
                     }
                 }

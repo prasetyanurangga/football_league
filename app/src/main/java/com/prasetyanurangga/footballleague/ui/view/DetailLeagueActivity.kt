@@ -72,7 +72,7 @@ class DetailLeagueActivity : AppCompatActivity(){
                         progressDialog.dismiss()
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
-                    Status.LOADING -> {
+                    else -> {
                         progressDialog.show()
                     }
                 }

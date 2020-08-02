@@ -73,7 +73,7 @@ class SearchMatchActivity : AppCompatActivity() {
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                         progressDialog.dismiss()
                     }
-                    Status.LOADING -> {
+                    else -> {
                         progressDialog.show()
                     }
                 }

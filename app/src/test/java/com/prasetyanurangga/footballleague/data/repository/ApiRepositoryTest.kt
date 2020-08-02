@@ -1,4 +1,4 @@
-package com.prasetyanurangga.footballleague.repository
+package com.prasetyanurangga.footballleague.data.repository
 
 import com.prasetyanurangga.footballleague.data.model.EventModel
 import com.prasetyanurangga.footballleague.data.model.LeagueModel

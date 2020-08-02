@@ -62,7 +62,7 @@ class NextMatchFragment(private val idLeague: String?) : Fragment() {
                     Status.ERROR -> {
                         Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                     }
-                    Status.LOADING -> {
+                    else -> {
                     }
                 }
             }

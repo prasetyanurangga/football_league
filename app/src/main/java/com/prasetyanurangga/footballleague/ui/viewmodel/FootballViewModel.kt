@@ -10,7 +10,8 @@ import kotlinx.coroutines.Dispatchers
 class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
 
     fun getLeague(id: String) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
+
+
         try {
             emit(Resource.success(
                 data = apiRepository.getLeagues(id)
@@ -20,10 +21,13 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         {
             emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
+
+        emit(Resource.loading(data = null))
+
     }
 
     fun getSearchEvent(e: String) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
+
         try {
             emit(Resource.success(
                 data = apiRepository.getSearchEvents(e).filter { it.SportName == "Soccer" }
@@ -33,10 +37,12 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         {
             emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
+
+        emit(Resource.loading(data = null))
     }
 
     fun getEventDetails(id: String) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
+
         try {
             emit(Resource.success(
                 data = apiRepository.getEventDetails(id)
@@ -46,10 +52,12 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         {
             emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
+
+        emit(Resource.loading(data = null))
     }
 
     fun getEvent(id: String) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
+
         try {
             emit(Resource.success(
                 data = apiRepository.getEvents(id)
@@ -59,10 +67,12 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         {
             emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
+
+        emit(Resource.loading(data = null))
     }
 
     fun getEventNext(id: String) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
+
         try {
             emit(Resource.success(
                 data = apiRepository.getEventNexts(id)
@@ -73,10 +83,11 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
             Log.e("e", exception.message.toString())
             emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
+
+        emit(Resource.loading(data = null))
     }
 
     fun getTeam(id: String) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
         try {
             emit(Resource.success(
                 data = apiRepository.getTeams(id)
@@ -86,10 +97,11 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         {
             emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
+        emit(Resource.loading(data = null))
+
     }
 
     fun getDetailTeam(id: String) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
         try {
             emit(Resource.success(
                 data = apiRepository.getDetailTeams(id)
@@ -99,5 +111,8 @@ class FootballViewModel(private val apiRepository: ApiRepository): ViewModel() {
         {
             emit(Resource.error(data = null, message = exception.message ?: "Error Unknown"))
         }
+
+        emit(Resource.loading(data = null))
+
     }
 }
