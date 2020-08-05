@@ -11,12 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.prasetyanurangga.footballleague.R
 import com.prasetyanurangga.footballleague.data.model.EventModel
 import com.prasetyanurangga.footballleague.ui.view.DetailMatchActivity
-import com.prasetyanurangga.footballleague.ui.view.FavoriteMatchActivity
 import com.prasetyanurangga.footballleague.utils.Convert
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class EventAdapter (
     val context: Context,
@@ -67,7 +62,6 @@ class EventAdapter (
                 intent.putExtra("idEvent", items[position].IdEvent)
                 intent.putExtra("isLocal", false)
                 context.startActivity(intent)
-
         }
     }
 }

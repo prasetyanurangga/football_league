@@ -1,7 +1,6 @@
 package com.prasetyanurangga.footballleague.ui.view
 
 import android.app.Dialog
-import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -46,8 +45,9 @@ class MatchActivity : AppCompatActivity() {
         val idLeague = if (!intent.getStringExtra("idLeague").isNullOrEmpty()) intent.getStringExtra("idLeague") else footballDatas[position].id.toString()
 
         val sectionsPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-        sectionsPagerAdapter.populateFragment(LastMatchFragment(idLeague), "Last Match", this)
-        sectionsPagerAdapter.populateFragment(NextMatchFragment(idLeague), "Next Match", this)
+        sectionsPagerAdapter.populateFragment(LastNextMatchFragment(idLeague), "Last Match", this)
+        sectionsPagerAdapter.populateFragment(KlasemenFragment(idLeague), "Klasemen", this)
+        sectionsPagerAdapter.populateFragment(TeamFragment(idLeague), "Team", this)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
@@ -71,11 +71,13 @@ class MatchActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        findViewById<Button>(R.id.btn_fav_league).setOnClickListener {
-            val intent: Intent = Intent(this, FavoriteMatchActivity::class.java)
-            intent.putExtra("idLeague", idLeague)
+        findViewById<Button>(R.id.btn_search_team).setOnClickListener {
+            val intent: Intent = Intent(this, SearchTeamActivity::class.java)
             startActivity(intent)
         }
+
+
+
 
         setProgressDialog()
         listTeam =  findViewById(R.id.list_team)

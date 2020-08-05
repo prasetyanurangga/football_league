@@ -22,9 +22,10 @@ import com.prasetyanurangga.footballleague.ui.adapter.EventAdapter
 import com.prasetyanurangga.footballleague.ui.viewmodel.FootballViewModel
 import com.prasetyanurangga.footballleague.utils.Status
 
-class LastMatchFragment(private val idLeague: String?) : Fragment() {
+class LastNextMatchFragment(private val idLeague: String?) : Fragment() {
 
-    lateinit var listEvent : RecyclerView
+    lateinit var listLastEvent : RecyclerView
+    lateinit var listNextEvent: RecyclerView
     private lateinit var eventViewModel: FootballViewModel
 
     override fun onCreateView(
@@ -32,16 +33,18 @@ class LastMatchFragment(private val idLeague: String?) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_last_match, container, false)
+        return inflater.inflate(R.layout.fragment_last_next_match, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        listEvent =  view.findViewById(R.id.list_event)
+        listLastEvent =  view.findViewById(R.id.list_event_last)
+        listNextEvent =  view.findViewById(R.id.list_event_next)
         createViewModel()
-        setListEvent(idLeague, activity)
+        setListLastEvent(idLeague, activity)
+        setListNextEvent(idLeague, activity)
 
     }
 
@@ -51,7 +54,7 @@ class LastMatchFragment(private val idLeague: String?) : Fragment() {
             FootballViewModel::class.java)
     }
 
-    private fun setListEvent(id: String?, fragmentActivity: FragmentActivity?) {
+    private fun setListLastEvent(id: String?, fragmentActivity: FragmentActivity?) {
         eventViewModel.getEvent(id!!).observe(fragmentActivity!!, Observer {
             it?.let { resource ->
                 when (resource.status) {
@@ -61,7 +64,31 @@ class LastMatchFragment(private val idLeague: String?) : Fragment() {
                         resource.data?.let { events ->
 
                             Log.e("daa",events.toString())
-                            updateUI(events, context)
+                            updateUILast(events, context)
+                        }
+                    }
+                    Status.ERROR -> {
+//                        progressDialog.hide()
+                        Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                    }
+                    else -> {
+//                        progressDialog.show()
+                    }
+                }
+            }
+        })
+    }
+    private fun setListNextEvent(id: String?, fragmentActivity: FragmentActivity?) {
+        eventViewModel.getEventNext(id!!).observe(fragmentActivity!!, Observer {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+//                        progressDialog.hide()
+                        Log.e("daa","data gak error")
+                        resource.data?.let { events ->
+
+                            Log.e("daa",events.toString())
+                            updateUINext(events, context)
                         }
                     }
                     Status.ERROR -> {
@@ -76,10 +103,20 @@ class LastMatchFragment(private val idLeague: String?) : Fragment() {
         })
     }
 
-    private fun updateUI(eventModel: List<EventModel>, context: Context?)
+    private fun updateUILast(eventModel: List<EventModel>, context: Context?)
     {
-        listEvent.layoutManager = LinearLayoutManager(context)
-        listEvent.adapter = EventAdapter(
+        val horizontalLayoutManager = LinearLayoutManager(context!!, LinearLayoutManager.HORIZONTAL, false)
+        listLastEvent.layoutManager = horizontalLayoutManager
+        listLastEvent.adapter = EventAdapter(
+            context!!,
+            eventModel
+        )
+    }
+    private fun updateUINext(eventModel: List<EventModel>, context: Context?)
+    {
+        val horizontalLayoutManager = LinearLayoutManager(context!!, LinearLayoutManager.HORIZONTAL, false)
+        listNextEvent.layoutManager = horizontalLayoutManager
+        listNextEvent.adapter = EventAdapter(
             context!!,
             eventModel
         )

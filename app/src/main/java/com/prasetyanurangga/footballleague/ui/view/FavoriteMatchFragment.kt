@@ -1,5 +1,6 @@
 package com.prasetyanurangga.footballleague.ui.view
 
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,54 +18,72 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.prasetyanurangga.footballleague.R
 import com.prasetyanurangga.footballleague.data.factory.FootballViewModelFactory
+import com.prasetyanurangga.footballleague.data.factory.LocalViewModelFactory
+import com.prasetyanurangga.footballleague.data.local.RoomBuilder
 import com.prasetyanurangga.footballleague.data.model.EventModel
+import com.prasetyanurangga.footballleague.data.model.KlasemenModel
 import com.prasetyanurangga.footballleague.data.network.RetrofitBuilder
 import com.prasetyanurangga.footballleague.data.repository.ApiRepository
 import com.prasetyanurangga.footballleague.ui.adapter.EventAdapter
+import com.prasetyanurangga.footballleague.ui.adapter.EventLocalAdapter
+import com.prasetyanurangga.footballleague.ui.adapter.KlasemenAdapter
 import com.prasetyanurangga.footballleague.ui.viewmodel.FootballViewModel
+import com.prasetyanurangga.footballleague.ui.viewmodel.LocalViewModel
 import com.prasetyanurangga.footballleague.utils.Status
 
-class NextMatchFragment(private val idLeague: String?) : Fragment() {
+class FavoriteMatchFragment() : Fragment() {
 
+    private lateinit var eventViewModel: LocalViewModel
     lateinit var listEvent : RecyclerView
-    private lateinit var eventViewModel: FootballViewModel
+    lateinit var txtNotFound : TextView
+    lateinit var progressDialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_next_match, container, false)
+        return inflater.inflate(R.layout.fragment_favorite_match, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setProgressDialog()
         listEvent =  view.findViewById(R.id.list_event)
+        txtNotFound =  view.findViewById(R.id.txt_not_found)
+
         createViewModel()
-        setListEvent(idLeague, activity)
+        setListEvent(activity)
 
     }
 
     private fun createViewModel()
     {
-        eventViewModel = ViewModelProvider(this, FootballViewModelFactory(ApiRepository(RetrofitBuilder.apiService))).get(
-            FootballViewModel::class.java)
+        val localDB = RoomBuilder.getInstance(context!!)
+        eventViewModel = ViewModelProvider(this, LocalViewModelFactory(localDB?.localDao()!!)).get(LocalViewModel::class.java)
     }
 
-    private fun setListEvent(id: String?, fragmentActivity: FragmentActivity?) {
-        eventViewModel.getEventNext(id!!).observe(fragmentActivity!!, Observer {
+    private fun setListEvent(fragmentActivity: FragmentActivity?) {
+        eventViewModel.getEvents().observe(fragmentActivity!!, Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+                        txtNotFound.visibility = View.VISIBLE
+                        listEvent.visibility = View.GONE
                         resource.data?.let { events ->
                             updateUI(events, context)
+                            listEvent.visibility = View.VISIBLE
+                            txtNotFound.visibility = View.GONE
                         }
+                        progressDialog.dismiss()
                     }
                     Status.ERROR -> {
                         Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                        progressDialog.dismiss()
                     }
                     else -> {
+                        progressDialog.show()
                     }
                 }
             }
@@ -71,11 +92,21 @@ class NextMatchFragment(private val idLeague: String?) : Fragment() {
 
     private fun updateUI(eventModel: List<EventModel>, context: Context?)
     {
-        Log.e("datanya", eventModel.toString())
         listEvent.layoutManager = LinearLayoutManager(context)
-        listEvent.adapter = EventAdapter(
+        listEvent.adapter = EventLocalAdapter(
             context!!,
             eventModel
         )
+
+    }
+    fun setProgressDialog()
+    {
+        val builder =
+            AlertDialog.Builder(context!!)
+        //View view = getLayoutInflater().inflate(R.layout.progress);
+        //View view = getLayoutInflater().inflate(R.layout.progress);
+        builder.setView(R.layout.progress)
+        progressDialog = builder.create()
+
     }
 }

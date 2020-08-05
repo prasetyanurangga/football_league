@@ -1,6 +1,7 @@
 package com.prasetyanurangga.footballleague.data.repository
 
 import com.prasetyanurangga.footballleague.data.model.EventModel
+import com.prasetyanurangga.footballleague.data.model.KlasemenModel
 import com.prasetyanurangga.footballleague.data.model.LeagueModel
 import com.prasetyanurangga.footballleague.data.model.TeamModel
 import com.prasetyanurangga.footballleague.data.service.ApiService
@@ -28,11 +29,19 @@ class ApiRepository(private val apiService: ApiService) {
         return apiService.getSearchEvents(e).items
     }
 
+    suspend fun getSearchTeams(e: String): List<TeamModel> {
+        return apiService.getSearchTeams(e).items
+    }
+
     suspend fun getTeams(id: String): List<TeamModel> {
         return apiService.getTeams(id).items
     }
 
     suspend fun getDetailTeams(id: String): List<TeamModel> {
         return apiService.getDetailTeams(id).items
+    }
+
+    suspend fun getKlasemens(id: String): List<KlasemenModel> {
+        return apiService.getKlasemens(id).items
     }
 }

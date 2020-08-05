@@ -1,9 +1,6 @@
 package com.prasetyanurangga.footballleague.data.service
 
-import com.prasetyanurangga.footballleague.data.model.EventResponse
-import com.prasetyanurangga.footballleague.data.model.EventResponses
-import com.prasetyanurangga.footballleague.data.model.LeagueResponse
-import com.prasetyanurangga.footballleague.data.model.TeamResponse
+import com.prasetyanurangga.footballleague.data.model.*
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -21,6 +18,9 @@ interface ApiService {
     @GET("searchevents.php")
     suspend fun getSearchEvents(@Query("e") e: String): EventResponse
 
+    @GET("searchteams.php")
+    suspend fun getSearchTeams(@Query("t") e: String): TeamResponse
+
     @GET("lookupevent.php")
     suspend fun getEventDetails(@Query("id") id: String): EventResponses
 
@@ -29,4 +29,7 @@ interface ApiService {
 
     @GET("lookupteam.php")
     suspend fun getDetailTeams(@Query("id") id: String): TeamResponse
+
+    @GET("lookuptable.php")
+    suspend fun getKlasemens(@Query("l") id: String): KlasemenResponse
 }

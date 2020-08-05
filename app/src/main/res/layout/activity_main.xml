@@ -4,8 +4,40 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:id="@+id/tlb_main"
+                android:background="@color/colorPrimary"
+                android:layout_height="?attr/actionBarSize">
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                android:id="@+id/txt_title"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_width="match_parent"
+                                android:text="Football League"
+                                android:textColor="#ffff"
+                                android:layout_height="wrap_content"/>
+
+                        <ImageView
+                                android:layout_marginTop="10dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/ic_favorite"
+                                android:layout_width="30dp"
+                                android:tooltipText="Favorite"
+                                android:elevation="10dp"
+                                android:id="@+id/btn_favorite"
+                                android:layout_height="30dp"/>
+                </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:id="@+id/list_league"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
 </LinearLayout>

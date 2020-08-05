@@ -1,131 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.view.MatchActivity">
-
-    <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:id="@+id/tlb_match"
-            android:background="@color/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:layout_height="wrap_content">
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/ic_arrow_back"
-                    android:layout_width="30dp"
-                    android:elevation="10dp"
-                    android:id="@+id/btn_go_back"
-                    android:layout_height="30dp"/>
-
-            <ImageView
-                    android:tooltipText="Search Event"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_search"
-                    android:layout_width="30dp"
-                    android:elevation="10dp"
-                    android:id="@+id/btn_event_search"
-                    android:layout_height="30dp"/>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-
+        tools:context=".ui.view.MatchActivity"
+>
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@color/colorPrimary">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:id="@+id/tlb_match"
+                android:background="@color/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:layout_height="wrap_content">
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/ic_arrow_back"
+                        android:layout_width="30dp"
+                        android:elevation="10dp"
+                        android:id="@+id/btn_go_back"
+                        android:layout_height="30dp"/>
+
+                <ImageView
+                        android:tooltipText="Search Event"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_search"
+                        android:layout_width="30dp"
+                        android:elevation="10dp"
+                        android:id="@+id/btn_event_search"
+                        android:layout_height="30dp"/>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@color/colorPrimary">
 
             <androidx.cardview.widget.CardView
-                app:cardBackgroundColor="#ffff"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#ffff"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 <LinearLayout
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
+                        android:layout_margin="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                <ImageView
-                        android:layout_margin="10dp"
-                        android:layout_width="100dp"
-                        android:elevation="10dp"
-                        android:id="@+id/football_image"
-                        android:layout_height="100dp"/>
                     <LinearLayout
-                            android:layout_margin="10dp"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
-                        <TextView
-                                android:layout_width="match_parent"
-                                android:textSize="20dp"
-                                android:id="@+id/football_name"
-                                android:layout_height="match_parent"/>
-                        <TextView
-                                android:layout_width="match_parent"
-                                android:id="@+id/football_desc"
-                                android:layout_height="match_parent"/>
-                        <Button
-                                android:textColor="#fff"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginRight="4dp"
-                                android:layout_marginLeft="4dp"
+                        <ImageView
+                                android:layout_margin="10dp"
+                                android:layout_width="100dp"
                                 android:elevation="10dp"
-                                android:background="@color/colorPrimary"
-                                android:id="@+id/btn_detail_league"
-                                android:text="Detail League"
+                                android:id="@+id/football_image"
+                                android:layout_height="100dp"/>
+                        <LinearLayout
+                                android:layout_margin="10dp"
+                                android:orientation="vertical"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"/>
-                        <Button
-                                android:textColor="#fff"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginRight="4dp"
-                                android:layout_marginLeft="4dp"
-                                android:elevation="10dp"
-                                android:background="@color/colorPrimary"
-                                android:id="@+id/btn_fav_league"
-                                android:text="Favorite Match"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"/>
+                                android:layout_height="wrap_content">
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:textSize="20dp"
+                                    android:id="@+id/football_name"
+                                    android:layout_height="match_parent"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:id="@+id/football_desc"
+                                    android:layout_height="match_parent"/>
+                            <Button
+                                    android:textColor="#fff"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:elevation="10dp"
+                                    android:background="@color/colorPrimary"
+                                    android:id="@+id/btn_detail_league"
+                                    android:text="Detail League"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                            <Button
+                                    android:textColor="#fff"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:elevation="10dp"
+                                    android:background="@color/colorPrimary"
+                                    android:id="@+id/btn_search_team"
+                                    android:text="Search Team"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+                        </LinearLayout>
                     </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:scrollbars="horizontal"
+                            android:layout_width="match_parent"
+                            android:id="@+id/list_team"
+                            android:layout_height="wrap_content"/>
                 </LinearLayout>
-                <androidx.recyclerview.widget.RecyclerView
-                        android:scrollbars="horizontal"
-                        android:layout_width="match_parent"
-                        android:id="@+id/list_team"
-                        android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                app:tabTextColor="#fff"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"/>
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     </LinearLayout>
-
-    <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            app:tabTextColor="#fff"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"/>
-
-    <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
-</LinearLayout>
+</ScrollView>

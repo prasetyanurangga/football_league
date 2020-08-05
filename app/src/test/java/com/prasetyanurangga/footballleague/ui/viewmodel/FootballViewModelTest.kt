@@ -2,6 +2,7 @@ package com.prasetyanurangga.footballleague.ui.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.*
+import com.prasetyanurangga.footballleague.RxSchedulerRule
 import com.prasetyanurangga.footballleague.TestCoroutineRule
 import com.prasetyanurangga.footballleague.data.model.EventModel
 import com.prasetyanurangga.footballleague.data.model.LeagueModel
@@ -32,6 +33,9 @@ class FootballViewModelTest {
 
     @get:Rule
     val testInstantTaskExecutorRule: TestRule = InstantTaskExecutorRule()
+
+    @get:Rule
+    val rxSchedulerRule: TestRule = RxSchedulerRule()
 
 
 

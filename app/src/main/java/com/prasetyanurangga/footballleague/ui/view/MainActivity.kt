@@ -1,7 +1,10 @@
 package com.prasetyanurangga.footballleague.ui.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.prasetyanurangga.footballleague.R
@@ -25,6 +28,11 @@ class MainActivity : AppCompatActivity() {
             this@MainActivity,
             footballDatas
         )
+
+        findViewById<ImageView>(R.id.btn_favorite).setOnClickListener {
+            val intent: Intent = Intent(this, FavoriteActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

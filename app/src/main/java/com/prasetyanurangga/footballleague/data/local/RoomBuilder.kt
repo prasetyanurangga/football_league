@@ -6,10 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.prasetyanurangga.footballleague.data.dao.LocalDao
 import com.prasetyanurangga.footballleague.data.model.EventModel
+import com.prasetyanurangga.footballleague.data.model.TeamModel
 
 @Database(
-    entities = arrayOf(EventModel::class),
-    version = 1
+    entities = arrayOf(EventModel::class, TeamModel::class),
+    version = 3
 )
 abstract class RoomBuilder : RoomDatabase() {
 

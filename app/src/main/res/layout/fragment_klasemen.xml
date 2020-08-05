@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".ui.view.KlasemenFragment">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:weightSum="6"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:layout_weight="2"
+                    android:layout_width="63dp"
+                    android:text="Name"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Play"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Win"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Loss"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Total"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/list_event"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</FrameLayout>
